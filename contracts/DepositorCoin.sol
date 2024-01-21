@@ -6,8 +6,10 @@ import {ERC20} from "./ERC20.sol";
 contract DepositorCoin is ERC20 {
     address public owner;
     
-    constructor ( string memory _name,
-        string memory _symbol) ERC20(_name,_symbol){}
+    constructor ( 
+        string memory _name,
+        string memory _symbol
+        ) ERC20(_name,_symbol){}
     
     function mint(address to,uint256 value) external {
         require(msg.sender == owner,"DPC:only owner can Mint");

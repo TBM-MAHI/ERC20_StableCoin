@@ -47,7 +47,6 @@ contract ERC20 {
     }
 
     function minNewToken(address to, uint256 value) external  {
-        
         _mint(to, value);
     }
 
