@@ -60,7 +60,7 @@ contract ERC20 {
         _mint(msg.sender, msg.value);
     }
 
-    
+    /// @dev dummy function to get tokens
     function giveMe1Token() external {
         balanceOf[msg.sender] += 1 * 10**18;
        /*  console.log(address(this));
@@ -84,7 +84,7 @@ contract ERC20 {
         console.log("msg.sender in transferFrom() ", msg.sender);
         require(
             allowance[from][msg.sender] >= amount,
-            "ERC20: INSUFFCIENT ALLOWANCE BALANCE"
+            "ERC20: INSUFFICIENT ALLOWANCE BALANCE"
         );
 
         allowance[from][msg.sender] = allowance[from][msg.sender] - amount;

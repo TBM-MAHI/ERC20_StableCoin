@@ -8,7 +8,7 @@ import {Oracle} from "./Oracle.sol";
 
 contract StableCoin is ERC20 {
     //Stablecoin is the Owner of the Depositor Coin
-    //depositor coin contract only becomes useful when people starts deposit extra ETh (leveraged trading)
+    //depositor coin contract only becomes useful when people starts deposit extra ETH (leveraged trading)
     DepositorCoin depositorCoin;
     Oracle public oracle;
     uint private feePercentage = 2;
@@ -21,7 +21,7 @@ contract StableCoin is ERC20 {
         string memory _symbol,
         uint _initial_Collateral_Ratio_Percentage,
         uint _locktime,
-        Oracle oracle_contractAddress //address of the contract
+        Oracle oracle_contractAddress  // address of the contract
      ) ERC20(_name,_symbol)
      {
         initial_Collateral_Ratio_Percentage = _initial_Collateral_Ratio_Percentage;
@@ -54,12 +54,12 @@ contract StableCoin is ERC20 {
         return amount*(feePersentage/100);
     }
 
- /// @dev // the function where extra ETH are deposited by leveraged traders
+    /// @dev // the function where extra ETH are deposited by leveraged traders
     function depositCollateralBuffer() payable external{
         /* in Our Example :
          Total Depositor Coin Supply : 250
          Total Dollar : 500$
-         price of 1 depositor Coin In USD = 0.5 USD 
+         price of 1 depositor Coin In USD/1DPC = 0.5 USD 
          */
         int deficit_or_surplus  = get_Surplus__OR__DeficitInUSD();
         uint added_surplus;
@@ -132,12 +132,12 @@ contract StableCoin is ERC20 {
         //the total amount of stableCoin Tokens when Deployed
          uint totalStableCoinBalanceInUSD = totalSupply;
 
-         /// now calculate the surplus or Deficit amount(when the pool is underwater) by subtracting total stable coin supply/amount 
+         /// now calculate the surplus or Deficit amount(Deficit-->when the pool is underwater) by subtracting total stable coin supply/amount 
          /// from the Total Contract Balance 
 
          
          /// @notice Example of deficit :::::
-         /// Deficit amount:  pool total balance(1500$) - Stable coin balance(2000$) = -500$
+         /// Deficit amount:  pool total balance(1500$) - Stable coin balance(2000 Stable Coin-2000$) = -500$
          
         int deficit_or_surplus = int( ethContractTotalBalanceInUSD )-int( totalStableCoinBalanceInUSD );
         return deficit_or_surplus;
